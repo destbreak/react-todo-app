@@ -1,22 +1,21 @@
-import React from 'react'
-import TodoItem from './TodoItem'
+import React from "react";
+import { List } from "@mui/material";
+import TodoItem from "./TodoItem";
 
-const Todos = ({todos}) => {
-    return (
-        <div style={styles.container}>
-            {todos.map((todo) => {
-                return <TodoItem key={todo.id} todo={todo} />
-            })}
-        </div>
-    )
-}
+const Todos = ({ todos }) => {
+  return (
+    <List style={styles.todoList}>
+      {todos.map((todo) => {
+        return <TodoItem key={todo.id} todo={todo} />;
+      })}
+    </List>
+  );
+};
 
 const styles = {
-    container: {
-        width: '40%',
-        margin: '0 auto',
-    },
-}
+  todoList: {
+    padding: "0",
+  },
+};
 
-export default Todos
-
+export default Todos;

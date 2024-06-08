@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Button, TextField } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
-const TodoForm = ({addTodo}) => {
-    const [title, setTitle] = useState('')
+const TodoForm = ({ addTodo }) => {
+  const [title, setTitle] = useState("");
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        addTodo(title)
-        setTitle('')
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTodo(title);
+    setTitle("");
+  };
 
-    const handleChangeTitle = (event) => {
-        setTitle(event.target.value)
-    }
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value);
+  };
 
-    return (
-        <div style={styles.container}>
-            <form
-                onSubmit={(event) => {
-                    handleSubmit(event)
-                }}
-            >
-                <input 
-                    type="text"
-                    placeholder="Add your Todo"
-                    style={styles.formInput}
-                    onChange={(event) => {
-                        handleChangeTitle(event)
-                    }}
-                    value={title}
-                />
-                <button style={styles.button}>Add Todo</button>
-            </form>
-        </div>
-    )
-}
+  return (
+    <div style={styles.container}>
+      <TextField
+        style={styles.todoInput}
+        placeholder="Apa yang perlu dilakukan?"
+        onChange={(event) => {
+          handleChangeTitle(event);
+        }}
+        value={title}
+      />
+      <Button
+        style={styles.todoSubmit}
+        variant="contained"
+        onClick={(event) => {
+          handleSubmit(event);
+        }}>
+        <SendIcon />
+      </Button>
+    </div>
+  );
+};
 
 const styles = {
-    container: {
-        marginBottom: '32px',
-    },
-    formInput: {
-        height: '66px',
-        width: '40%',
-        fontSize: '16px',
-        padding: '0 16px',
-    },
-    button: {
-        height: '72px',
-        fontSize: '16px',
-    },
-}
+  container: {
+    marginBottom: "16px",
+    textAlign: "center",
+  },
+  todoInput: {
+    width: "80%",
+  },
+  todoSubmit: {
+    height: "56px",
+    marginLeft: "15px",
+  },
+};
 
 export default TodoForm;
